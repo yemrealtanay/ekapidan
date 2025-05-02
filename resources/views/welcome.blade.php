@@ -36,4 +36,41 @@
             </div>
         </div>
     </section>
+
+    <section class="py-20 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {{-- Görsel --}}
+            <div>
+                <img src="{{ asset('images/faqs.png') }}" alt="SSS Görseli" class="w-full max-w-md mx-auto">
+            </div>
+
+            {{-- FAQ Alanı --}}
+            <div>
+                <h2 class="text-3xl font-bold mb-6">Sıkça Sorulan Sorular</h2>
+                <div class="space-y-5 text-sm text-gray-700">
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-900">Ekapıdan nedir?</h3>
+                        <p class="mt-1">Ekapıdan, kargo firmaları ve göndericileri bir araya getirerek uygun fiyatlarla gönderim yapmanızı sağlayan bir platformdur.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-900">Hangi kargo firmalarıyla çalışıyorsunuz?</h3>
+                        <p class="mt-1">Sisteme kayıtlı onlarca firma bulunmaktadır. Gönderi detaylarınıza göre en uygun seçenekleri listeliyoruz.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-900">Üyelik ücretli mi?</h3>
+                        <p class="mt-1">Hayır, platforma kayıt olmak tamamen ücretsizdir.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-900">Gönderi takibini nasıl yaparım?</h3>
+                        <p class="mt-1">Hesabınıza giriş yaptıktan sonra "Gönderilerim" bölümünden tüm kargo hareketlerinizi görüntüleyebilirsiniz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 @endsection

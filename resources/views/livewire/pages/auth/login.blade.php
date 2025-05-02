@@ -24,11 +24,33 @@ new #[Layout('layouts.guest')] class extends Component
     }
 }; ?>
 
-<div>
+<div class="max-w-md mx-auto mt-16 bg-white shadow-lg rounded-lg p-8">
+
+    {{-- Logo --}}
+    <div class="flex justify-center mb-6">
+        <a href="/" wire:navigate>
+            <img src="{{ asset('images/ekapidan.png') }}" alt="Ekapıdan" class="h-14">
+        </a>
+    </div>
+
+    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Giriş Yap</h2>
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form wire:submit="login">
+    {{-- Social Login Placeholder --}}
+    <div class="space-y-3 mb-6">
+        <button class="w-full flex items-center justify-center gap-3 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded shadow transition">
+            <i class="fab fa-google"></i>
+            Google ile Giriş Yap
+        </button>
+        <button class="w-full flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow transition">
+            <i class="fab fa-facebook-f"></i>
+            Facebook ile Giriş Yap
+        </button>
+    </div>
+
+    <form wire:submit="login" class="space-y-6">
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
@@ -37,35 +59,32 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
+        <div>
+            <x-input-label for="password" :value="__('Şifre')" />
+            <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             <x-input-error :messages="$errors->get('form.password')" class="mt-2" />
         </div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember" class="inline-flex items-center">
-                <input wire:model="form.remember" id="remember" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+        <!-- Remember Me + Forgot -->
+        <div class="flex items-center justify-between">
+            <label for="remember" class="flex items-center text-sm text-gray-600">
+                <input wire:model="form.remember" id="remember" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500 mr-2">
+                Beni Hatırla
             </label>
-        </div>
 
-        <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}" wire:navigate>
-                    {{ __('Forgot your password?') }}
+                <a class="text-sm text-indigo-600 hover:underline" href="{{ route('password.request') }}" wire:navigate>
+                    Şifrenizi mi unuttunuz?
                 </a>
             @endif
+        </div>
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
+        <!-- Login Button -->
+        <div class="flex justify-end">
+            <x-primary-button class="w-full justify-center">
+                Giriş Yap
             </x-primary-button>
         </div>
     </form>
 </div>
+
